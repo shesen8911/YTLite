@@ -21,7 +21,7 @@
 
 #include <UIKit/UIActivityViewController.h>
 
-#import "../YouTubeHeader/YTUIUtils.h"
+#include <YouTubeHeader/YTUIUtils.h>
 
 #import "../protobuf/objectivec/GPBDescriptor.h"
 #import "../protobuf/objectivec/GPBMessage.h"
