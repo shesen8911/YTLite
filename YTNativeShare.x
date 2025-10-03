@@ -26,7 +26,7 @@
 #import <protobuf/objectivec/GPBDescriptor.h>
 #import <protobuf/objectivec/GPBMessage.h>
 #import <protobuf/objectivec/GPBUnknownField.h>
-#import <protobuf/objectivec/GPBUnknownFieldSet.h>
+#import <protobuf/objectivec/GPBUnknownFields.h>
 
 #define ytlBool(key)  [[[NSUserDefaults alloc] initWithSuiteName:@"com.dvntm.ytlite"] boolForKey:key]
 
