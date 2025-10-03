@@ -9,10 +9,10 @@
     dispatch_once(&onceToken, ^{
         NSString *bundlePath = nil;
 
-#if ROOTHIDE
-        bundlePath = jbroot(@"/Library/Application Support/YTLite.bundle");
-#elif ROOTLESS
+#if ROOTLESS
         bundlePath = ROOT_PATH_NS("/Library/Application Support/YTLite.bundle");
+#elif ROOTHIDE
+        bundlePath = jbroot(@"/Library/Application Support/YTLite.bundle");
 #else
         bundlePath = [[NSBundle mainBundle] pathForResource:@"YTLite" ofType:@"bundle"];
 #endif
