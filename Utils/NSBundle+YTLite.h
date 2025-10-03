@@ -1,5 +1,9 @@
 #import <Foundation/Foundation.h>
+#if ROOTLESS
+#import <rootless.h>
+#elif ROOTHIDE
 #import <roothide.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
