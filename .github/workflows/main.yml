@@ -182,6 +182,20 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
+      - name: Clone Protobuf
+        run: |
+          if [ -d "$THEOS/include/Protobuf" ]; then
+            echo "Protobuf exists. Pulling latest changes..."
+            cd $THEOS/include/Protobuf
+            git pull
+          else
+            echo "Protobuf does not exist. Cloning repository..."
+            cd $THEOS/include
+            git clone --quiet --depth=1 https://github.com/protocolbuffers/protobuf.git
+          fi
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
       - name: Clone YouPiP
         if: ${{ inputs.enable_youpip }}
         run: |
