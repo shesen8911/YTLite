@@ -306,7 +306,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/main
           make clean package ROOTLESS=1
-          packages/*.deb ${{ github.workspace }}/ytplus.deb
+          mv packages/*.deb ${{ github.workspace }}/ytplus.deb
         env:
           THEOS: ${{ github.workspace }}/theos
           
