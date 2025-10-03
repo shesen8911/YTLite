@@ -1305,7 +1305,8 @@ static void manageSpeedmasterYTLite(UILongPressGestureRecognizer *gesture, YTMai
 
     YTLabel *label = [edu valueForKey:@"_userEducationLabel"];
     edu.labelType = 1;
-    [label setValue:[NSString stringWithFormat:@"%@: %@×", LOC(@"PlaybackSpeed"), speedLabels[ytlInt(@"speedIndex")]] forKey:@"text"];
+    NSString *speedText = [NSString stringWithFormat:@"%@倍速▶▶", speedLabels[ytlInt(@"speedIndex")]];
+    [label setValue:speedText forKey:@"text"];
 
     if (gesture.state == UIGestureRecognizerStateBegan) {
         rateBeforeSpeedmaster = delegate.currentPlaybackRate;
