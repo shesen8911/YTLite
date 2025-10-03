@@ -184,9 +184,13 @@ jobs:
 
       - name: Clone Protobuf
         run: |
+          if [ -d "$THEOS/include/Protobuf" ]; then
+            echo "PSHeader exists."
+          else
             echo "Protobuf does not exist. Cloning repository..."
             cd $THEOS/include
             git clone --quiet --depth=1 --branch v3.25.3 https://github.com/protocolbuffers/protobuf.git
+          fi
         env:
           THEOS: ${{ github.workspace }}/theos
 
