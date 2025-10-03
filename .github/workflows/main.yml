@@ -149,20 +149,20 @@ jobs:
       - name: Clone YouTubeHeader
         if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc }}
         run: |
-          if [ -d "$THEOS/include/YouTubeHeader" ]; then
+          if [ -d "$THEOS/YouTubeHeader" ]; then
             echo "YouTubeHeader exists. Pulling latest changes..."
-            cd $THEOS/include/YouTubeHeader
+            cd $THEOS/YouTubeHeader
             git pull
           else
             echo "YouTubeHeader does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd $THEOS
             git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git
           fi
 
           if [ "${{ inputs.enable_demc }}" = "true" ]; then
             echo "Copying YouTubeHeader to YTHeaders..."
-            rm -rf "$THEOS/include/YTHeaders"
-            cp -r "$THEOS/include/YouTubeHeader" "$THEOS/include/YTHeaders"
+            rm -rf "$THEOS/YTHeaders"
+            cp -r "$THEOS/YouTubeHeader" "$THEOS/YTHeaders"
           fi
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -170,13 +170,13 @@ jobs:
       - name: Clone PSHeader
         if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc }}
         run: |
-          if [ -d "$THEOS/include/PSHeader" ]; then
+          if [ -d "$THEOS/PSHeader" ]; then
             echo "PSHeader exists. Pulling latest changes..."
-            cd $THEOS/include/PSHeader
+            cd $THEOS/PSHeader
             git pull
           else
             echo "PSHeader does not exist. Cloning repository..."
-            cd $THEOS/include
+            cd $THEOS
             git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git
           fi
         env:
