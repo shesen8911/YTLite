@@ -10,7 +10,7 @@
         NSString *bundlePath = nil;
 
 #if ROOTLESS
-        bundlePath = ROOT_PATH_NS("/Library/Application Support/YTLite.bundle");
+        bundlePath = ROOT_PATH_NS(@"/Library/Application Support/YTLite.bundle");
 #elif ROOTHIDE
         bundlePath = jbroot(@"/Library/Application Support/YTLite.bundle");
 #else
