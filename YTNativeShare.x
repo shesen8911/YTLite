@@ -26,7 +26,7 @@
 #import <protobuf/objectivec/GPBDescriptor.h>
 #import <protobuf/objectivec/GPBMessage.h>
 #import <protobuf/objectivec/GPBUnknownField.h>
-#import <protobuf/objectivec/GPBUnknownFields.h>
+#import <protobuf/objectivec/GPBUnknownFieldSet.h>
 
 #define ytlBool(key)  [[[NSUserDefaults alloc] initWithSuiteName:@"com.dvntm.ytlite"] boolForKey:key]
 
@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, ShareEntityType) {
     ShareEntityFieldClip = 8
 };
 
-static inline NSString* extractIdWithFormat(GPBUnknownFields *fields, NSInteger fieldNumber, NSString *format) {
+static inline NSString* extractIdWithFormat(GPBUnknownFieldSet *fields, NSInteger fieldNumber, NSString *format) {
     if (![fields hasField:fieldNumber])
         return nil;
     GPBUnknownField *idField = [fields getField:fieldNumber];
