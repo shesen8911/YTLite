@@ -7,15 +7,17 @@
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"YTLite" ofType:@"bundle"];
-        #if defined(ROOTHIDE) && __has_include(<roothide.h>)
-            #import <roothide.h>
-            NSString *bundlePath = jbroot(@"/Library/Application Support/YTLite.bundle");
-        #else
-            NSString *bundlePath = ROOT_PATH_NS("/Library/Application Support/YTLite.bundle");
-        #endif
+        NSString *bundlePath = nil;
 
-        bundle = [NSBundle bundleWithPath:tweakBundlePath ?: bundlePath];
+#if ROOTHIDE
+        bundlePath = jbroot(@"/Library/Application Support/YTLite.bundle");
+#elif ROOTLESS
+        bundlePath = ROOT_PATH_NS("/Library/Application Support/YTLite.bundle");
+#else
+        bundlePath = [[NSBundle mainBundle] pathForResource:@"YTLite" ofType:@"bundle"];
+#endif
+
+        bundle = [NSBundle bundleWithPath:bundlePath];
     });
 
     return bundle;
