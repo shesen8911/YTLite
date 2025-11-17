@@ -197,7 +197,7 @@ jobs:
       - name: Clone YTUHD
         if: ${{ inputs.enable_ytuhd }}
         run: |
-          cd: ${{ github.workspace }}
+          cd ${{ github.workspace }}
           git clone --quiet --depth=1 https://github.com/PoomSmart/YTUHD.git
 
       - name: Clone Return-YouTube-Dislikes
